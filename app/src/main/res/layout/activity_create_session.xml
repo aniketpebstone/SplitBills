@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateSession"
-    android:background="@color/backGroundColor">
+    tools:context=".CreateSession">
 
     <TextView
     android:id="@+id/textView1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/CodeFont"
-    android:text="Name of the session"
+    android:text="@string/sessionNameLabel"
     android:layout_margin="20dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -20,13 +19,14 @@
 
     <EditText
         android:id="@+id/sessionName"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView1"
-        android:hint="Trip To Goa ! etc.."/>
+        android:hint="@string/NameOfSessionHint"/>
         <requestFocus />
 
     <Button
@@ -34,18 +34,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:onClick="createNewSession"
+        android:text="@string/CreateSessionButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sessionName"
-        android:text="Save" />
+        app:layout_constraintTop_toBottomOf="@id/sessionName" />
 
     <Button
         android:id="@+id/cancelSessionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:layout_constraintStart_toEndOf="@id/saveSessionName"
-        app:layout_constraintTop_toTopOf="@id/saveSessionName"
+        android:onClick="cancelCreateSession"
+        android:text="@string/CancelSessionButton"
         app:layout_constraintBottom_toBottomOf="@id/saveSessionName"
-        android:text="cancel" />
+        app:layout_constraintStart_toEndOf="@id/saveSessionName"
+        app:layout_constraintTop_toTopOf="@id/saveSessionName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
