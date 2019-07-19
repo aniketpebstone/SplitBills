@@ -12,6 +12,11 @@
         <activity android:name=".Screens.CreateSession"
             android:parentActivityName=".Screens.MainActivity">
         </activity>
+
+        <activity android:name=".Screens.DeleteSessions"
+            android:parentActivityName=".Screens.MainActivity">
+        </activity>
+
         <activity android:name=".Screens.AllSessions"
             android:parentActivityName=".Screens.MainActivity">
         </activity>

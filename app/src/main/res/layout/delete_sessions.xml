@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llAllSessions"
+    android:id="@+id/llDeleteSessions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/backGroundColor">
 
 	<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sessions"
+        android:id="@+id/rv_delete_sessions"
         android:background="@color/backGroundColor"
         android:padding="10dp"
         android:layout_width="match_parent"

@@ -14,20 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.aniket.splitbills.R;
+import org.aniket.splitbills.adapter.DeleteSessionAdapter;
 import org.aniket.splitbills.adapter.SessionListAdapter;
 import org.aniket.splitbills.model.Session;
 import org.aniket.splitbills.model.SessionViewModel;
 
 import java.util.List;
 
-public class AllSessions extends AppCompatActivity {
+public class DeleteSessions extends AppCompatActivity {
 
     private SessionViewModel mSessionViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_sessions);
+        setContentView(R.layout.delete_sessions);
 
         mSessionViewModel = ViewModelProviders.of(this).get(SessionViewModel.class);
         mSessionViewModel.getAllSessions().observe(this, new Observer<List<Session>>() {
@@ -36,7 +37,7 @@ public class AllSessions extends AppCompatActivity {
 
                 if(sessions==null || sessions.isEmpty())
                 {
-                    RecyclerView recyclerView = findViewById(R.id.sessions);
+                    RecyclerView recyclerView = findViewById(R.id.rv_delete_sessions);
                     recyclerView.setVisibility(View.GONE);
                 }
                 else
@@ -44,10 +45,10 @@ public class AllSessions extends AppCompatActivity {
                     // Update the cached copy of the words in the adapter.
                     TextView textView=findViewById(R.id.emptyText);
                     textView.setVisibility(View.GONE);
-                    RecyclerView recyclerView = findViewById(R.id.sessions);
+                    RecyclerView recyclerView = findViewById(R.id.rv_delete_sessions);
                     recyclerView.setVisibility(View.VISIBLE);
-                    SessionListAdapter adapter = new SessionListAdapter(AllSessions.this);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(AllSessions.this));
+                    DeleteSessionAdapter adapter = new DeleteSessionAdapter(DeleteSessions.this);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(DeleteSessions.this));
                     recyclerView.setAdapter(adapter);
                     adapter.setSessions(sessions);
                 }
@@ -57,7 +58,7 @@ public class AllSessions extends AppCompatActivity {
 
     }
 
-    public void onSessionItemClicked(View view) {
+    public void onDeleteSessionItemClicked(View view) {
         LinearLayout linearLayout= (LinearLayout) view.getParent();
         int id=Integer.parseInt(linearLayout.getTag().toString());
         System.out.println("======================================== ID: "+id);
