@@ -1,12 +1,12 @@
-package org.aniket.splitbills;
+package org.aniket.splitbills.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
+
+import org.aniket.splitbills.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToLoadSessionScreen(View view) {
 
-        Intent intent = new Intent(this, CreateSession.class);
+        Intent intent = new Intent(this, AllSessions.class);
         startActivity(intent);
 
     }
