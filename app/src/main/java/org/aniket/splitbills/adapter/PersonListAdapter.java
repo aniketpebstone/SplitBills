@@ -24,8 +24,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
 
         private PersonViewHolder(View itemView) {
             super(itemView);
-            //TODO:change sessionItem to personItem
-            personItemView = itemView.findViewById(R.id.tv_sessionItem);
+            personItemView = itemView.findViewById(R.id.tv_personItem);
             llAllPersons = (LinearLayout) itemView;
         }
     }
@@ -39,7 +38,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
 
     @Override
     public PersonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.sessons_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.persons_item, parent, false);
         return new PersonViewHolder(itemView);
     }
 

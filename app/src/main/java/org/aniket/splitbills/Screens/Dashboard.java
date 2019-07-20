@@ -17,7 +17,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void goToAllPerson(View view) {
-//        Intent intent = new Intent(this, AllPerson.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, AllPersons.class);
+        startActivity(intent);
     }
 }
