@@ -18,58 +18,57 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.aniket.splitbills.R;
 import org.aniket.splitbills.adapter.*;
 import org.aniket.splitbills.model.*;
 import org.aniket.splitbills.model.*;
-import org.aniket.splitbills.R;
 
 import java.util.List;
 
-public class AllPersons extends AppCompatActivity {
+public class AllTransactions extends AppCompatActivity {
 
-    private PersonViewModel mPersonViewModel;
+    private TransactionViewModel mTxnViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_persons);
+        setContentView(R.layout.activity_all_transactions);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AllPersons.this, AddPerson.class);
+                Intent intent = new Intent(AllTransactions.this, AddTransaction.class);
                 startActivity(intent);
             }
         });
 
 
-        mPersonViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
-        mPersonViewModel.getAllPersonsBySessionId().observe(this, new Observer<List<Person>>() {
+        mTxnViewModel = ViewModelProviders.of(this).get(TransactionViewModel.class);
+        mTxnViewModel.getAllTransactionsBySessionId().observe(this, new Observer<List<Transaction>>() {
             @Override
-            public void onChanged(@Nullable final List<Person> persons) {
+            public void onChanged(@Nullable final List<Transaction> transactions) {
 
-                if(persons==null || persons.isEmpty())
+                if(transactions==null || transactions.isEmpty())
                 {
-                    RecyclerView recyclerView = findViewById(R.id.rv_allPersons);
+                    RecyclerView recyclerView = findViewById(R.id.rv_allTransactions);
                     recyclerView.setVisibility(View.GONE);
                 }
                 else
                 {
-                    // Update the cached copy of the words in the adapter.
-                    TextView textView=findViewById(R.id.tv_emptyText2);
+                    TextView textView=findViewById(R.id.tv_emptyText3);
                     textView.setVisibility(View.GONE);
-                    RecyclerView recyclerView = findViewById(R.id.rv_allPersons);
+                    RecyclerView recyclerView = findViewById(R.id.rv_allTransactions);
                     recyclerView.setVisibility(View.VISIBLE);
-                    PersonListAdapter adapter = new PersonListAdapter(AllPersons.this);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(AllPersons.this));
+                    TransactionListAdapter adapter = new TransactionListAdapter(AllTransactions.this);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(AllTransactions.this));
                     recyclerView.setAdapter(adapter);
-                    adapter.setPersons(persons);
+                    adapter.setPersons(transactions);
                 }
             }
         });
     }
 
-    public void onPersonItemClicked(View view) {
+    public void onTransactionItemClicked(View view) {
         LinearLayout linearLayout= (LinearLayout) view.getParent();
         int id=Integer.parseInt(linearLayout.getTag().toString());
         System.out.println("======================================== ID: "+id);

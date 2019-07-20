@@ -22,6 +22,6 @@ public interface PersonDao {
     @Query("Delete FROM person WHERE id=:id")
     void deleteById(int id);
 
-    @Query("SELECT * from person where sessionId=:sessionId ORDER BY id")
+    @Query("SELECT * from person where session_id=:sessionId ORDER BY id")
     LiveData<List<Person>> getAllPersonsBySessionId(int sessionId);
 }

@@ -9,12 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Screens.AddPerson"
-            android:parentActivityName=".Screens.AddPerson"></activity>
+        <activity
+            android:name=".Screens.AllTransactions"
+            android:label="@string/title_activity_all_transactions"
+            android:parentActivityName=".Screens.Dashboard">
+        </activity>
+        <activity
+            android:name=".Screens.AddPerson"
+            android:parentActivityName=".Screens.AddPerson" />
+        <activity
+            android:name=".Screens.AddTransaction"
+            android:parentActivityName=".Screens.AddTransaction" />
         <activity
             android:name=".Screens.AllPersons"
             android:label="@string/title_activity_all_persons"
-            android:parentActivityName=".Screens.Dashboard"/>
+            android:parentActivityName=".Screens.Dashboard" />
         <activity
             android:name=".Screens.CreateSession"
             android:parentActivityName=".Screens.MainActivity" />

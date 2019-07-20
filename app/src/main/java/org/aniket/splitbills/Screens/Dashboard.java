@@ -20,4 +20,9 @@ public class Dashboard extends AppCompatActivity {
         Intent intent = new Intent(this, AllPersons.class);
         startActivity(intent);
     }
+
+    public void goToAllTxns(View view) {
+        Intent intent = new Intent(this, AllTransactions.class);
+        startActivity(intent);
+    }
 }

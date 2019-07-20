@@ -1,6 +1,7 @@
 package org.aniket.splitbills.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,6 +14,7 @@ public class Person {
     @NonNull
     private String name;
     @NonNull
+    @ColumnInfo(name = "session_id")
     private int sessionId;
 
     public Person()
