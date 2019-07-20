@@ -9,7 +9,7 @@
     android:background="@color/backGroundColor">
 
     <Button
-        android:id="@+id/createSession"
+        android:id="@+id/btn_goToCreateSession"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/loadSession"
+        android:id="@+id/btn_goToLoadSession"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -32,10 +32,10 @@
         android:textColor="@color/buttonTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createSession" />
+        app:layout_constraintTop_toBottomOf="@id/btn_goToCreateSession" />
 
     <Button
-        android:id="@+id/deleteSession"
+        android:id="@+id/btn_goToDeleteSession"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -45,6 +45,6 @@
         android:textColor="@color/buttonTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loadSession" />
+        app:layout_constraintTop_toBottomOf="@id/btn_goToLoadSession" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

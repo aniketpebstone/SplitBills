@@ -23,7 +23,7 @@ public class DeleteSessionAdapter extends RecyclerView.Adapter<DeleteSessionAdap
 
         private DeleteSessionViewHolder(View itemView) {
             super(itemView);
-            sessionItemView = itemView.findViewById(R.id.tv_delete_session);
+            sessionItemView = itemView.findViewById(R.id.tv_deleteSessionItem);
             llDeleteSessionItemView = (LinearLayout) itemView;
         }
     }

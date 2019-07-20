@@ -6,7 +6,7 @@
     android:background="@color/backGroundColor">
 
 	<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sessions"
+        android:id="@+id/rv_allSessions"
         android:background="@color/backGroundColor"
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
     />
     
     <TextView 
-	   	  android:id="@+id/emptyText"
+	   	  android:id="@+id/tv_emptyText"
 	      android:layout_width="fill_parent"
 	      android:layout_height="30dp"
 	      style="@style/CodeFont"	      	      

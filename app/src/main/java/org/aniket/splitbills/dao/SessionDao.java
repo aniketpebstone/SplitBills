@@ -23,6 +23,6 @@ public interface SessionDao {
     @Query("Delete FROM session WHERE id=:id")
     void deleteById(int id);
 
-    @Query("SELECT * from session ORDER BY name ASC")
+    @Query("SELECT * from session ORDER BY id")
     LiveData<List<Session>> getAllSessions();
 }

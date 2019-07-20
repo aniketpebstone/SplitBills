@@ -20,6 +20,10 @@
         <activity android:name=".Screens.AllSessions"
             android:parentActivityName=".Screens.MainActivity">
         </activity>
+
+        <activity android:name=".Screens.Dashboard"
+            android:parentActivityName=".Screens.AllSessions">
+        </activity>
         <activity android:name=".Screens.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

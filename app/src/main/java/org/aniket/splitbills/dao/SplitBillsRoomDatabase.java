@@ -6,9 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.aniket.splitbills.model.Session;
+import org.aniket.splitbills.model.*;
 
-@Database(entities = {Session.class}, version = 1,exportSchema = false)
+@Database(entities = {Session.class,Person.class}, version = 1,exportSchema = false)
 public abstract class SplitBillsRoomDatabase extends RoomDatabase {
 
     private static volatile SplitBillsRoomDatabase INSTANCE;
@@ -28,4 +28,5 @@ public abstract class SplitBillsRoomDatabase extends RoomDatabase {
     }
 
     public abstract SessionDao sessionDao();
+    public abstract PersonDao personDao();
 }

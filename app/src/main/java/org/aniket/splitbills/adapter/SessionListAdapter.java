@@ -25,7 +25,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
         private SessionViewHolder(View itemView) {
             super(itemView);
-            sessionItemView = itemView.findViewById(R.id.tv_session);
+            sessionItemView = itemView.findViewById(R.id.tv_sessionItem);
             llAllSessions = (LinearLayout) itemView;
         }
     }

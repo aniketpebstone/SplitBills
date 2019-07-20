@@ -14,10 +14,13 @@
     <string name="CreateSessionScreen">Create Event</string>
     <string name="CreateSessionButton">Create</string>
     <string name="CancelSessionButton">Cancel</string>
+    <string name="CancelPersonButton">Cancel</string>
     <string name="UpdatePersonScreen">Update Person</string>
     <string name="UpdateTransactionScreen">Update Transaction</string>
     <string name="AllTransactionsScreen">All Transactions</string>
     <string name="AllPersonScreen">All Person</string>
     <string name="NameOfSessionHint">Trip to Goa ,Hotel expenses.. etc </string>
     <string name="sessionNameLabel">Name of the Event</string>
+    <string name="personNameLabel">Name of the Person</string>
+    <string name="title_activity_all_person">AllPerson</string>
 </resources>

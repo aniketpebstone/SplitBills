@@ -1,6 +1,7 @@
 package org.aniket.splitbills.Screens;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.aniket.splitbills.R;
 import org.aniket.splitbills.adapter.SessionListAdapter;
+import org.aniket.splitbills.model.ActiveSession;
 import org.aniket.splitbills.model.Session;
 import org.aniket.splitbills.model.SessionViewModel;
 
@@ -36,15 +38,15 @@ public class AllSessions extends AppCompatActivity {
 
                 if(sessions==null || sessions.isEmpty())
                 {
-                    RecyclerView recyclerView = findViewById(R.id.sessions);
+                    RecyclerView recyclerView = findViewById(R.id.rv_allSessions);
                     recyclerView.setVisibility(View.GONE);
                 }
                 else
                 {
                     // Update the cached copy of the words in the adapter.
-                    TextView textView=findViewById(R.id.emptyText);
+                    TextView textView=findViewById(R.id.tv_emptyText);
                     textView.setVisibility(View.GONE);
-                    RecyclerView recyclerView = findViewById(R.id.sessions);
+                    RecyclerView recyclerView = findViewById(R.id.rv_allSessions);
                     recyclerView.setVisibility(View.VISIBLE);
                     SessionListAdapter adapter = new SessionListAdapter(AllSessions.this);
                     recyclerView.setLayoutManager(new LinearLayoutManager(AllSessions.this));
@@ -61,6 +63,9 @@ public class AllSessions extends AppCompatActivity {
         LinearLayout linearLayout= (LinearLayout) view.getParent();
         int id=Integer.parseInt(linearLayout.getTag().toString());
         System.out.println("======================================== ID: "+id);
+        ActiveSession.sessionId=id;
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
     }
 
 }

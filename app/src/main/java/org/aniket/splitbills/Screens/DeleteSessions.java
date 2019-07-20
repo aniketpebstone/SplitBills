@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.aniket.splitbills.R;
 import org.aniket.splitbills.adapter.DeleteSessionAdapter;
-import org.aniket.splitbills.adapter.SessionListAdapter;
 import org.aniket.splitbills.model.Session;
 import org.aniket.splitbills.model.SessionViewModel;
 
@@ -43,7 +42,7 @@ public class DeleteSessions extends AppCompatActivity {
                 else
                 {
                     // Update the cached copy of the words in the adapter.
-                    TextView textView=findViewById(R.id.emptyText);
+                    TextView textView=findViewById(R.id.tv_emptyText);
                     textView.setVisibility(View.GONE);
                     RecyclerView recyclerView = findViewById(R.id.rv_delete_sessions);
                     recyclerView.setVisibility(View.VISIBLE);

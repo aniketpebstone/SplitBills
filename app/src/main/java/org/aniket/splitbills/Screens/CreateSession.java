@@ -3,7 +3,6 @@ package org.aniket.splitbills.Screens;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ public class CreateSession extends AppCompatActivity {
     }
 
     public void createNewSession(View view) {
-        TextView textView=findViewById(R.id.sessionName);
+        TextView textView=findViewById(R.id.edt_createSessionName);
         String sessionName=textView.getText().toString();
         sessionViewModel.insert(new Session(sessionName));
         finish();

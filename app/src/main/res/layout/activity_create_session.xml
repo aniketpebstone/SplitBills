@@ -18,7 +18,7 @@
     app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/sessionName"
+        android:id="@+id/edt_createSessionName"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,24 +30,24 @@
         <requestFocus />
 
     <Button
-        android:id="@+id/saveSessionName"
+        android:id="@+id/btn_createSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:onClick="createNewSession"
         android:text="@string/CreateSessionButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sessionName" />
+        app:layout_constraintTop_toBottomOf="@id/edt_createSessionName" />
 
     <Button
-        android:id="@+id/cancelSessionName"
+        android:id="@+id/btn_CancelSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:onClick="cancelCreateSession"
         android:text="@string/CancelSessionButton"
-        app:layout_constraintBottom_toBottomOf="@id/saveSessionName"
-        app:layout_constraintStart_toEndOf="@id/saveSessionName"
-        app:layout_constraintTop_toTopOf="@id/saveSessionName" />
+        app:layout_constraintBottom_toBottomOf="@id/btn_createSession"
+        app:layout_constraintStart_toEndOf="@id/btn_createSession"
+        app:layout_constraintTop_toTopOf="@id/btn_createSession" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
