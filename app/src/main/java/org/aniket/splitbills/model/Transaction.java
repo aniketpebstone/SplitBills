@@ -35,8 +35,7 @@ public class Transaction {
     public Transaction()
     {}
     @Ignore
-    public Transaction(int id, int sessionId, int personId, String expense, int amount,long createdDate) {
-        this.id = id;
+    public Transaction(int sessionId, int personId, String expense, int amount,long createdDate) {
         this.sessionId = sessionId;
         this.personId = personId;
         this.expense = expense;

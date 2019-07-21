@@ -16,13 +16,11 @@ public class AddTransaction extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_person);
+        setContentView(R.layout.activity_add_transaction);
         txnViewModel = ViewModelProviders.of(this).get(TransactionViewModel.class);
     }
 
-    public void createNewPerson(View view) {
-        TextView textView=findViewById(R.id.edt_createPersonName);
-        String personName=textView.getText().toString();
+    public void createNewTxn(View view) {
         txnViewModel.insert(new Transaction());
         finish();
     }
