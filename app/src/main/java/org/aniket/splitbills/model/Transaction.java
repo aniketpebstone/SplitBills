@@ -26,7 +26,7 @@ public class Transaction {
     private String expense;
 
     @NonNull
-    private int amount;
+    private float amount;
 
     @NonNull
     @ColumnInfo(name = "create_date")
@@ -35,7 +35,7 @@ public class Transaction {
     public Transaction()
     {}
     @Ignore
-    public Transaction(int sessionId, int personId, String expense, int amount,long createdDate) {
+    public Transaction( int sessionId, int personId, String expense, int amount,long createdDate) {
         this.sessionId = sessionId;
         this.personId = personId;
         this.expense = expense;
@@ -75,11 +75,11 @@ public class Transaction {
         this.expense = expense;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
