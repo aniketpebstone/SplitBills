@@ -11,7 +11,45 @@ public class BusinessLogic {
     public List<Result> generateResult(List<Dues> dues)
     {
 
-        return  null;
+        List<Result> results=new ArrayList<>();
+        List<Dues> positive=new ArrayList<>();
+        List<Dues> negetive=new ArrayList<>();
+
+        for(Dues due:dues)
+        {
+            if(due.difference > 0)
+            {
+                positive.add(due);
+            }
+            else if(due.difference < 0)
+            {
+                negetive.add(due);
+            }
+        }
+        System.out.println("                  -----   positive  ------                  ");
+        System.out.println(positive);
+        System.out.println("                  -----   negetive  ------                  ");
+        System.out.println(negetive);
+        while(positive.size() !=0 && negetive.size()!=0)
+        {
+            if(positive.get(0).duesReceivable > positive.get(0).duesPayable)
+            {
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",negetive.get(0).duesPayable*-1));
+                negetive.remove(0);
+            }
+            else if(positive.get(0).duesReceivable < positive.get(0).duesPayable)
+            {
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).duesPayable));
+                positive.remove(0);
+            }
+            else
+            {
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).duesPayable));
+                positive.remove(0);
+                negetive.remove(0);
+            }
+        }
+        return results;
     }
 
     public List<Dues> generateDues(List<Transaction> transactions, List<Split> splits)
@@ -103,7 +141,14 @@ public class BusinessLogic {
         splitsList.add(new Split(1,8,3,1,20));
         splitsList.add(new Split(1,8,3,3,20));
 
-        System.out.println(new BusinessLogic().generateDues(txnList,splitsList));
+
+        List<Dues> dues=new BusinessLogic().generateDues(txnList,splitsList);
+        System.out.println("=======================   DUES  ==============================");
+        System.out.println(dues);
+
+        List<Result> results=new BusinessLogic().generateResult(dues);
+        System.out.println("=======================   RESULT  ==============================");
+        System.out.println(results);
 
     }
 
