@@ -3,8 +3,10 @@ package org.aniket.splitbills.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class BusinessLogic {
 
@@ -57,60 +59,58 @@ public class BusinessLogic {
     public List<Dues> generateDues(List<Transaction> transactions, List<Split> splits)
     {
         List<Dues> dues=new ArrayList<>();
-
         //For receivables calculation
-        Map<Integer,Float> map=new HashMap<>();
+
 
         for(Transaction transaction:transactions)
         {
-            if(map.containsKey(transaction.getPersonId()))
+            Dues due=new Dues();
+            due.personId=transaction.getPersonId();
+            if(dues.contains(due))
             {
-                float val=map.get(transaction.getPersonId());
-                val+=transaction.getAmount();
-                map.put(transaction.getPersonId(),val);
+                Dues existDue=getDueFromList(dues,due);
+                existDue.duesReceivable+=transaction.getAmount();
             }
             else
             {
-                map.put(transaction.getPersonId(),transaction.getAmount());
+                due.duesReceivable=transaction.getAmount();
+                dues.add(due);
             }
         }
 
-        for (Map.Entry<Integer,Float> entry : map.entrySet())
-        {
-            Dues due=new Dues();
-            due.personId=entry.getKey();
-            due.duesReceivable=entry.getValue();
-            dues.add(due);
-        }
-
-        //For payable calculation
-        map=new HashMap<>();
         for(Split split:splits)
         {
-            if(map.containsKey(split.getSplitAmong()))
+            Dues due=new Dues();
+            due.personId=split.getSplitAmong();
+            if(dues.contains(due))
             {
-                float val=map.get(split.getSplitAmong());
-                val+=split.getSplitAmount();
-                map.put(split.getSplitAmong(),val);
+                Dues existDue=getDueFromList(dues,due);
+                existDue.duesPayable+=split.getSplitAmount();
             }
             else
             {
-                map.put(split.getSplitAmong(),split.getSplitAmount());
+                due.duesPayable=split.getSplitAmount();
+                dues.add(due);
             }
+
         }
 
-        for (Map.Entry<Integer,Float> entry : map.entrySet())
+        for(Dues diffDue:dues)
         {
-            for(Dues due:dues)
-            {
-                if(due.personId==entry.getKey())
-                {
-                    due.duesPayable=entry.getValue();
-                    due.difference=due.duesReceivable-due.duesPayable;
-                }
-            }
+            diffDue.difference=diffDue.duesReceivable-diffDue.duesPayable;
         }
         return dues;
+    }
+
+    private Dues getDueFromList(List<Dues> dues,Dues due) {
+       for(Dues d:dues)
+       {
+           if(d.equals(due))
+           {
+               return d;
+           }
+       }
+    return null;
     }
 
     public static void main(String args[])
