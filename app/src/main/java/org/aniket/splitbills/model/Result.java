@@ -14,4 +14,15 @@ public class Result {
         this.payerName = payerName;
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Result[" +
+                "receiver=" + receiver +
+                ", receiverName='" + receiverName + '\'' +
+                ", payer=" + payer +
+                ", payerName='" + payerName + '\'' +
+                ", amount=" + amount +
+                ']';
+    }
 }

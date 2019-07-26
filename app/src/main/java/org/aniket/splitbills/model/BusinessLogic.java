@@ -32,19 +32,21 @@ public class BusinessLogic {
         System.out.println(negetive);
         while(positive.size() !=0 && negetive.size()!=0)
         {
-            if(positive.get(0).duesReceivable > positive.get(0).duesPayable)
+            if(positive.get(0).difference >  Math.abs(negetive.get(0).difference))
             {
-                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",negetive.get(0).duesPayable*-1));
+                positive.get(0).difference-=Math.abs(negetive.get(0).difference);
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",Math.abs(negetive.get(0).difference)));
                 negetive.remove(0);
             }
-            else if(positive.get(0).duesReceivable < positive.get(0).duesPayable)
+            else if(positive.get(0).difference < Math.abs(negetive.get(0).difference))
             {
-                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).duesPayable));
+                negetive.get(0).difference+=positive.get(0).difference;
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).difference));
                 positive.remove(0);
             }
             else
             {
-                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).duesPayable));
+                results.add(new Result(positive.get(0).personId,"",negetive.get(0).personId,"",positive.get(0).difference));
                 positive.remove(0);
                 negetive.remove(0);
             }
