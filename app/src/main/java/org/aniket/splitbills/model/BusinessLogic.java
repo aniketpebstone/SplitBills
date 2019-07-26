@@ -2,11 +2,7 @@ package org.aniket.splitbills.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class BusinessLogic {
 
@@ -60,41 +56,24 @@ public class BusinessLogic {
     {
         List<Dues> dues=new ArrayList<>();
         //For receivables calculation
-
-
         for(Transaction transaction:transactions)
         {
             Dues due=new Dues();
             due.personId=transaction.getPersonId();
-            if(dues.contains(due))
-            {
-                Dues existDue=getDueFromList(dues,due);
-                existDue.duesReceivable+=transaction.getAmount();
-            }
-            else
-            {
-                due.duesReceivable=transaction.getAmount();
-                dues.add(due);
-            }
-        }
+            Dues existDue=createOrGetDueFromList(dues,due);
+            existDue.duesReceivable+=transaction.getAmount();
 
+        }
+        //For payable calculation
         for(Split split:splits)
         {
             Dues due=new Dues();
             due.personId=split.getSplitAmong();
-            if(dues.contains(due))
-            {
-                Dues existDue=getDueFromList(dues,due);
-                existDue.duesPayable+=split.getSplitAmount();
-            }
-            else
-            {
-                due.duesPayable=split.getSplitAmount();
-                dues.add(due);
-            }
+            Dues existDue=createOrGetDueFromList(dues,due);
+            existDue.duesPayable+=split.getSplitAmount();
 
         }
-
+        //For difference calculation
         for(Dues diffDue:dues)
         {
             diffDue.difference=diffDue.duesReceivable-diffDue.duesPayable;
@@ -102,15 +81,17 @@ public class BusinessLogic {
         return dues;
     }
 
-    private Dues getDueFromList(List<Dues> dues,Dues due) {
-       for(Dues d:dues)
-       {
-           if(d.equals(due))
-           {
-               return d;
-           }
-       }
-    return null;
+    private Dues createOrGetDueFromList(List<Dues> dues, Dues due) {
+        if (!dues.contains(due)) {
+            dues.add(due);
+            return due;
+        }
+        for (Dues d : dues) {
+            if (d.equals(due)) {
+                return d;
+            }
+        }
+        return due;
     }
 
     public static void main(String args[])
