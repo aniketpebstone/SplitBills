@@ -24,4 +24,7 @@ public interface PersonDao {
 
     @Query("SELECT * from person where session_id=:sessionId ORDER BY id")
     LiveData<List<Person>> getAllPersonsBySessionId(int sessionId);
+
+    @Query("SELECT * from person where id=:psersonId")
+    LiveData<Person> getPersonsByPersonId(int psersonId);
 }

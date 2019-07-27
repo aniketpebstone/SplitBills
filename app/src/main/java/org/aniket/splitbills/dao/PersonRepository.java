@@ -26,8 +26,16 @@ public class PersonRepository {
         return allPersons;
     }
 
+    public LiveData<Person> getPersonsById(int id) {
+        return personDao.getPersonsByPersonId(id);
+    }
+
     public void insert (Person person) {
         new insertAsyncTask(personDao).execute(person);
+    }
+
+    public void update (Person person) {
+        new updateAsyncTask(personDao).execute(person);
     }
 
     private static class insertAsyncTask extends AsyncTask<Person, Void, Void> {
@@ -41,6 +49,21 @@ public class PersonRepository {
         @Override
         protected Void doInBackground(final Person... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<Person, Void, Void> {
+
+        private PersonDao mAsyncTaskDao;
+
+        updateAsyncTask(PersonDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Person... params) {
+            mAsyncTaskDao.update(params[0]);
             return null;
         }
     }

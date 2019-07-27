@@ -73,6 +73,10 @@ public class AllPersons extends AppCompatActivity {
         LinearLayout linearLayout= (LinearLayout) view.getParent();
         int id=Integer.parseInt(linearLayout.getTag().toString());
         System.out.println("======================================== ID: "+id);
+        Intent intent = new Intent(this, EditPerson.class);
+        intent.putExtra("PERSON_ID",id);
+        startActivity(intent);
+
     }
 
 }

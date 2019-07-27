@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Screens.EditPerson"></activity>
         <activity
             android:name=".Screens.AllTransactions"
             android:label="@string/title_activity_all_transactions"
-            android:parentActivityName=".Screens.Dashboard">
-        </activity>
+            android:parentActivityName=".Screens.Dashboard"></activity>
         <activity
             android:name=".Screens.AddPerson"
-            android:parentActivityName=".Screens.AddPerson" />
+            android:parentActivityName=".Screens.AllPersons" />
         <activity
             android:name=".Screens.AddTransaction"
             android:parentActivityName=".Screens.AddTransaction" />

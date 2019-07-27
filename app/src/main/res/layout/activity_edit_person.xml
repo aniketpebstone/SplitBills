@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Screens.AddPerson">
+
+    <TextView
+        android:id="@+id/editTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CodeFont"
+        android:text="@string/personNameLabel"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/edt_editCreatePersonName"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextView2"/>
+    <requestFocus />
+
+    <Button
+        android:id="@+id/btn_editCreatePerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:onClick="editPerson"
+        android:text="@string/UpdatePersonScreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_editCreatePersonName" />
+
+    <Button
+        android:id="@+id/btn_editCancelPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:onClick="cancelUpdatePerson"
+        android:text="@string/CancelPersonButton"
+        app:layout_constraintBottom_toBottomOf="@id/btn_editCreatePerson"
+        app:layout_constraintStart_toEndOf="@id/btn_editCreatePerson"
+        app:layout_constraintTop_toTopOf="@id/btn_editCreatePerson" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
