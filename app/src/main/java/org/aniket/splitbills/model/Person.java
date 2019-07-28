@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity(tableName = "person")
 public class Person {
     @PrimaryKey(autoGenerate = true)
@@ -22,6 +24,14 @@ public class Person {
     @Ignore
     public Person(String name,int sessionId)
     {
+        this.name=name;
+        this.sessionId=sessionId;
+    }
+
+    @Ignore
+    public Person(int id,String name,int sessionId)
+    {
+        this.id=id;
         this.name=name;
         this.sessionId=sessionId;
     }
@@ -44,6 +54,20 @@ public class Person {
     public void setSessionId(int sessionId) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return getId() == person.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
     @Override
     public String toString() {
         return "Person [id=" + id + ", name=" + name

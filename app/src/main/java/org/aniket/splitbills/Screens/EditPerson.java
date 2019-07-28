@@ -25,27 +25,36 @@ import java.util.List;
 
 public class EditPerson extends AppCompatActivity {
     private PersonViewModel mPersonViewModel;
+    int personId=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_person);
-        int personId = getIntent().getIntExtra("PERSON_ID",-1);
+        personId = getIntent().getIntExtra("PERSON_ID",-1);
 
 
         mPersonViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
         mPersonViewModel.getPersonsByPersonId(personId).observe(this, new Observer<Person>() {
             @Override
-            public void onChanged(@Nullable final Person persons) {
+            public void onChanged(@Nullable final Person person) {
+                if(person!=null)
+                {
+                    EditText editText=findViewById(R.id.edt_editCreatePersonName);
+                    editText.setText(person.getName());
+                }
 
-                EditText editText=findViewById(R.id.edt_editCreatePersonName);
-                editText.setText(persons.getName());
             }
         });
     }
     public void editPerson(View view) {
         TextView textView=findViewById(R.id.edt_editCreatePersonName);
         String personName=textView.getText().toString();
-        mPersonViewModel.update(new Person(personName, ActiveSession.sessionId));
+        mPersonViewModel.update(new Person(personId,personName, ActiveSession.sessionId));
+        finish();
+    }
+
+    public void deletePerson(View view) {
+        mPersonViewModel.delete(new Person(personId,null, ActiveSession.sessionId));
         finish();
     }
 

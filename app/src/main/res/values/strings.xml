@@ -15,8 +15,10 @@
     <string name="CreateSessionButton">Create</string>
     <string name="CreatePersonButton">Create</string>
     <string name="CancelSessionButton">Cancel</string>
-    <string name="CancelPersonButton">Cancel</string>
+    <string name="CancelButton">Cancel</string>
+    <string name="deleteButton">Delete</string>
     <string name="UpdatePersonScreen">Update Person</string>
+    <string name="UpdateButton">Update</string>
     <string name="UpdateTransactionScreen">Update Transaction</string>
     <string name="AllTransactionsScreen">All Transactions</string>
     <string name="AllPersonScreen">All Person</string>

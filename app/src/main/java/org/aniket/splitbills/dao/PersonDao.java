@@ -2,6 +2,7 @@ package org.aniket.splitbills.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -18,6 +19,9 @@ public interface PersonDao {
 
     @Update
     void update(Person person);
+
+    @Delete
+    void delete(Person person);
 
     @Query("Delete FROM person WHERE id=:id")
     void deleteById(int id);

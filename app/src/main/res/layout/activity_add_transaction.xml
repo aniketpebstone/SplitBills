@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:onClick="cancelCreatePerson"
-        android:text="@string/CancelPersonButton"
+        android:text="@string/CancelButton"
         app:layout_constraintStart_toEndOf="@id/edt_saveTxn"
         app:layout_constraintTop_toTopOf="@id/edt_saveTxn"
         app:layout_constraintBottom_toBottomOf="@id/edt_saveTxn"/>
