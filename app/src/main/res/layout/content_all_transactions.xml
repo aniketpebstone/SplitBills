@@ -19,7 +19,7 @@
         android:layout_height="30dp"
         style="@style/CodeFont"
         android:visibility="visible"
-        android:text="No Transaction done so far!"
+        android:text="There are no expenses so far!"
         />
 
 </LinearLayout>

@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backGroundColor"
-    tools:context=".Screens.Dashboard">
+    android:orientation="vertical"
+   >
+
+    <TextView
+        android:id="@+id/tv_titlePerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage participants"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
 
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv_person"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
+        card_view:cardCornerRadius="10dp"
         card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@id/tv_titlePerson"
         card_view:layout_constraintBottom_toTopOf="@id/cv_txn"
-        android:layout_margin="40dp">
+        android:layout_margin="5dp">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -32,13 +41,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="You can add a person, modify person name and delete a person.."
-                android:layout_margin="20dp"/>
+                android:layout_margin="5dp"/>
 
             <Button
                 android:id="@+id/btn_createPerson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="5dp"
                 android:onClick="goToAllPerson"
                 android:background="@color/buttonColor"
                 android:layout_gravity="center_horizontal"
@@ -50,19 +59,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/tv_titleTxn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage expenses"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv_txn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
+        card_view:cardCornerRadius="10dp"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintTop_toBottomOf="@id/cv_person"
+        card_view:layout_constraintTop_toBottomOf="@id/tv_titleTxn"
         card_view:layout_constraintBottom_toTopOf="@id/cv_result"
-        android:layout_margin="40dp">
+        android:layout_margin="5dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -75,14 +92,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="You can add a person, modify person name and delete a person.."
-                android:layout_margin="20dp"/>
+                android:text="You can see all the history of expenses, modify and delete a expense.."
+                android:layout_margin="5dp"/>
 
             <Button
                 android:id="@+id/btn_createTxn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="5dp"
                 android:onClick="goToAllTxns"
                 android:background="@color/buttonColor"
                 android:layout_gravity="center_horizontal"
@@ -94,17 +111,25 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/tv_titleSplit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
+        card_view:cardCornerRadius="10dp"
         card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toBottomOf="@id/cv_txn"
+        card_view:layout_constraintTop_toBottomOf="@id/tv_titleSplit"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="40dp">
+        android:layout_margin="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -119,14 +144,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="You can add a person, modify person name and delete a person.."
-                android:layout_margin="20dp"/>
+                android:text="You can generate the result/splits which shows who has to gives money to whom."
+                android:layout_margin="5dp"/>
 
             <Button
                 android:id="@+id/btn_createResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="5dp"
                 android:onClick="goToAllTxns"
                 android:background="@color/buttonColor"
                 android:layout_gravity="center_horizontal"
@@ -138,4 +163,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

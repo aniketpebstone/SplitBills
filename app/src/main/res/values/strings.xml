@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SplitBills</string>
+    <string name="app_name">Split Bills</string>
     <string name="action_settings">Settings</string>
     <string name="createSession">Create New Event</string>
     <string name="loadSession">Load Existing Event</string>
@@ -8,9 +8,9 @@
     <string name="backToHomeScreen">Back</string>
     <string name="deleteSessions">Delete Events</string>
     <string name="SessionScreen">Dashboard</string>
-    <string name="AddPersonScreen">Add Person</string>
+    <string name="AddPersonScreen">Add Participants</string>
     <string name="ResultScreen">Result</string>
-    <string name="AddTransactionScreen">Add Transaction</string>
+    <string name="AddTransactionScreen">Add Expense</string>
     <string name="CreateSessionScreen">Create Event</string>
     <string name="CreateSessionButton">Create</string>
     <string name="CreatePersonButton">Create</string>
