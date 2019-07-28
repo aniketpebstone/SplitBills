@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Screens.EditPerson"></activity>
+        <activity android:name=".Screens.EditPerson"
+            android:parentActivityName=".Screens.AllPersons"></activity>
         <activity
             android:name=".Screens.AllTransactions"
             android:label="@string/title_activity_all_transactions"
