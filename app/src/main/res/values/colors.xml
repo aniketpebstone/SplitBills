@@ -7,4 +7,5 @@
     <color name="backGroundColor">#EFE9C9</color>
     <color name="buttonTextColor">#2C2A2B</color>
     <color name="deleteButtonColor">#f44336</color>
+    <color name="textprimary">#212121</color>
 </resources>

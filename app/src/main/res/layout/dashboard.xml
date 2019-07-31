@@ -8,6 +8,9 @@
 
     <TextView
         android:id="@+id/tv_titlePerson"
+        android:textColor="@color/textprimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage participants"
@@ -19,7 +22,7 @@
         android:id="@+id/cv_person"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="10dp"
+        card_view:cardCornerRadius="5dp"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintTop_toBottomOf="@id/tv_titlePerson"
@@ -34,6 +37,10 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_infoPerson"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:textColor="#585858"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -45,22 +52,27 @@
 
             <Button
                 android:id="@+id/btn_createPerson"
+                android:textSize="14dp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:onClick="goToAllPerson"
-                android:background="@color/buttonColor"
+                android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_infoPerson"
-                android:text="Persons"/>
+                android:text="Person Details"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_titleTxn"
+        android:textColor="@color/textprimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage expenses"
@@ -72,7 +84,7 @@
         android:id="@+id/cv_txn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="10dp"
+        card_view:cardCornerRadius="5dp"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintTop_toBottomOf="@id/tv_titleTxn"
@@ -86,6 +98,10 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_infoTxn"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:textColor="#585858"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -97,22 +113,27 @@
 
             <Button
                 android:id="@+id/btn_createTxn"
+                android:textSize="14dp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:onClick="goToAllTxns"
-                android:background="@color/buttonColor"
+                android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_infoTxn"
-                android:text="Transactions"/>
+                android:text="Transaction Details"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_titleSplit"
+        android:textColor="@color/textprimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Overview"
@@ -124,7 +145,7 @@
         android:id="@+id/cv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="10dp"
+        card_view:cardCornerRadius="5dp"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toBottomOf="@id/tv_titleSplit"
         card_view:layout_constraintBottom_toBottomOf="parent"
@@ -138,6 +159,10 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_infoResult"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:textColor="#585858"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -149,11 +174,13 @@
 
             <Button
                 android:id="@+id/btn_createResult"
+                android:textSize="14dp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:onClick="goToAllTxns"
-                android:background="@color/buttonColor"
+                android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
