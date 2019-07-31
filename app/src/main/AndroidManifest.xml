@@ -29,7 +29,7 @@
             android:name=".Screens.CreateSession"
             android:parentActivityName=".Screens.MainActivity" />
         <activity
-            android:name=".Screens.DeleteSessions"
+            android:name=".Screens.ModifySessions"
             android:parentActivityName=".Screens.MainActivity" />
         <activity
             android:name=".Screens.AllSessions"
@@ -37,6 +37,11 @@
         <activity
             android:name=".Screens.Dashboard"
             android:parentActivityName=".Screens.AllSessions" />
+
+        <activity
+            android:name=".Screens.EditSession"
+            android:parentActivityName=".Screens.AllSessions" />
+
         <activity android:name=".Screens.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

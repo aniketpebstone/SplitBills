@@ -21,10 +21,9 @@ public class PersonViewModel extends AndroidViewModel {
     public PersonViewModel(@NonNull Application application) {
         super(application);
         mRepository = new PersonRepository(application);
-        mAllPersons = mRepository.getAllPersonsBySessionId();
     }
 
-    public LiveData<List<Person>> getAllPersonsBySessionId() { return mAllPersons; }
+    public LiveData<List<Person>> getAllPersonsBySessionId() { return mRepository.getAllPersonsBySessionId(); }
 
     public LiveData<Person> getPersonsByPersonId(int id) {
         return mRepository.getPersonsById(id);

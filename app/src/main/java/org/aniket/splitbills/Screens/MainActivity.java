@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goToDeleteSessionScreen(View view) {
 
-        Intent intent = new Intent(this, DeleteSessions.class);
+        Intent intent = new Intent(this, ModifySessions.class);
         startActivity(intent);
 
     }

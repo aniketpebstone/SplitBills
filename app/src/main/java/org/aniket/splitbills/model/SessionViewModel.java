@@ -18,11 +18,16 @@ public class SessionViewModel  extends AndroidViewModel {
     public SessionViewModel(@NonNull Application application) {
         super(application);
         mRepository = new SessionRepository(application);
-        mAllSessions = mRepository.getAllSessions();
     }
 
-    public LiveData<List<Session>> getAllSessions() { return mAllSessions; }
+    public LiveData<List<Session>> getAllSessions() { return mAllSessions = mRepository.getAllSessions(); }
+
+    public LiveData<Session> getSessionById(int id) {
+        return mRepository.getSessionById(id);
+    }
 
     public void insert(Session session) { mRepository.insert(session); }
+
+    public void update(Session session) { mRepository.update(session); }
 
 }

@@ -28,8 +28,10 @@ public class AddTransaction extends AppCompatActivity {
 
     private TransactionViewModel txnViewModel;
     private PersonViewModel personViewModel;
-    Spinner spinner =null;
-    RecyclerView recyclerView=null;
+    Spinner spinner = null;
+    boolean splittedEqually=true;
+    RecyclerView recyclerView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,10 @@ public class AddTransaction extends AppCompatActivity {
         txnViewModel = ViewModelProviders.of(this).get(TransactionViewModel.class);
         personViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
         spinner = (Spinner) findViewById(R.id.sp_personName);
-        recyclerView= (RecyclerView) findViewById(R.id.rv_allPersons_in_txns);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_allPersons_in_txns);
         //Radio Group
-        RadioButton radioButton=findViewById(R.id.rd_equally);
+        RadioButton radioButton = findViewById(R.id.rd_equally);
         radioButton.setChecked(true);
-
 
 
         personViewModel.getAllPersonsBySessionId().observe(this, new Observer<List<Person>>() {
@@ -49,8 +50,17 @@ public class AddTransaction extends AppCompatActivity {
             public void onChanged(@Nullable final List<Person> persons) {
                 List<String> personNameList = new ArrayList<String>();
                 //For spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddTransaction.this, android.R.layout.simple_spinner_item, personNameList);
-                spinner.setAdapter(dataAdapter);
+                if (persons == null || persons.isEmpty()) {
+                    personNameList.add("-- Select Person --");
+                } else {
+                    for (Person person : persons) {
+                        personNameList.add(person.getName());
+                    }
+
+                }
+                SpinnerAdapter<Person> spinnerAdapter=new SpinnerAdapter<>(AddTransaction.this,R.id.sp_personName,R.id.tv_name,persons);
+//                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddTransaction.this, android.R.layout.simple_spinner_item, personNameList);
+                spinner.setAdapter(spinnerAdapter);
 
                 //For recycle view
                 recyclerView.setVisibility(View.GONE);
@@ -60,18 +70,6 @@ public class AddTransaction extends AppCompatActivity {
                 adapter.setPersons(persons);
 
 
-                if(persons==null || persons.isEmpty())
-                {
-                    personNameList.add("-- Select Person --");
-                }
-                else
-                {
-                    for(Person person:persons)
-                    {
-                        personNameList.add(person.getName());
-                    }
-
-                }
             }
         });
 
@@ -81,6 +79,7 @@ public class AddTransaction extends AppCompatActivity {
 
         System.out.println("Amount is splitted equally!");
         recyclerView.setVisibility(View.GONE);
+        splittedEqually=true;
 
     }
 
@@ -88,16 +87,27 @@ public class AddTransaction extends AppCompatActivity {
 
         System.out.println("Amount is not splitted equally!");
         recyclerView.setVisibility(View.VISIBLE);
+        splittedEqually=false;
     }
 
     public void createNewTxn(View view) {
-        if(spinner.getSelectedItem().equals("-- Select Person --"))
+        String amountSpendTxt=((TextView)findViewById(R.id.amtSpend)).getText().toString();
+        String purpose=((TextView)findViewById(R.id.purpose)).getText().toString();
+        Float amountSpend=Float.parseFloat(amountSpendTxt);
+        if (spinner.getSelectedItem().equals("-- Select Person --"))
+        {
             System.out.println("Please add the Person first!");
+        }
         else
-            System.out.println("Transaction for "+spinner.getSelectedItem()+" added successfully!");
+        {
+
+            Person person=(Person)spinner.getSelectedItem();
+            System.out.println(person.getName()+" spend "+amountSpend+" on "+purpose+" which "+ (splittedEqually?"Splitted Equally":"Splitted among ")+" "+recyclerView.getTag());
+        }
     }
 
     public void cancelCreatePerson(View view) {
         finish();
     }
+
 }

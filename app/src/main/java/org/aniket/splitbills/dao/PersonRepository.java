@@ -19,11 +19,10 @@ public class PersonRepository {
     public PersonRepository(Application application) {
         SplitBillsRoomDatabase db = SplitBillsRoomDatabase.getDatabase(application);
         personDao = db.personDao();
-        allPersons = personDao.getAllPersonsBySessionId(ActiveSession.sessionId);
     }
 
     public LiveData<List<Person>> getAllPersonsBySessionId() {
-        return allPersons;
+        return personDao.getAllPersonsBySessionId(ActiveSession.sessionId);
     }
 
     public LiveData<Person> getPersonsById(int id) {

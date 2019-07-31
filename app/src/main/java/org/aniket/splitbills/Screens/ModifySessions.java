@@ -1,6 +1,7 @@
 package org.aniket.splitbills.Screens;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,14 +21,14 @@ import org.aniket.splitbills.model.SessionViewModel;
 
 import java.util.List;
 
-public class DeleteSessions extends AppCompatActivity {
+public class ModifySessions extends AppCompatActivity {
 
     private SessionViewModel mSessionViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.delete_sessions);
+        setContentView(R.layout.modify_sessions);
 
         mSessionViewModel = ViewModelProviders.of(this).get(SessionViewModel.class);
         mSessionViewModel.getAllSessions().observe(this, new Observer<List<Session>>() {
@@ -46,8 +47,8 @@ public class DeleteSessions extends AppCompatActivity {
                     textView.setVisibility(View.GONE);
                     RecyclerView recyclerView = findViewById(R.id.rv_delete_sessions);
                     recyclerView.setVisibility(View.VISIBLE);
-                    DeleteSessionAdapter adapter = new DeleteSessionAdapter(DeleteSessions.this);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(DeleteSessions.this));
+                    DeleteSessionAdapter adapter = new DeleteSessionAdapter(ModifySessions.this);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(ModifySessions.this));
                     recyclerView.setAdapter(adapter);
                     adapter.setSessions(sessions);
                 }
@@ -61,6 +62,15 @@ public class DeleteSessions extends AppCompatActivity {
         LinearLayout linearLayout= (LinearLayout) view.getParent();
         int id=Integer.parseInt(linearLayout.getTag().toString());
         System.out.println("======================================== ID: "+id);
+    }
+
+    public void onUpdateSessionItemClicked(View view) {
+        LinearLayout linearLayout= (LinearLayout) view.getParent();
+        int id=Integer.parseInt(linearLayout.getTag().toString());
+        System.out.println("======================================== ID: "+id);
+        Intent intent = new Intent(this, EditSession.class);
+        intent.putExtra("SESSION_ID",id);
+        startActivity(intent);
     }
 
 }

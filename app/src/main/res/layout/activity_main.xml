@@ -41,7 +41,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/button_layout"
         android:onClick="goToDeleteSessionScreen"
-        android:text="@string/deleteSession"
+        android:text="@string/modifySession"
         android:textColor="@color/buttonTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

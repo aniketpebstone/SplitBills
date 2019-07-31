@@ -19,10 +19,9 @@ public class TransactionViewModel extends AndroidViewModel {
     public TransactionViewModel(@NonNull Application application) {
         super(application);
         mRepository = new TransactionRepository(application);
-        mAllTransactions = mRepository.getAllTransactionsBySessionId();
     }
 
-    public LiveData<List<Transaction>> getAllTransactionsBySessionId() { return mAllTransactions; }
+    public LiveData<List<Transaction>> getAllTransactionsBySessionId() { return mRepository.getAllTransactionsBySessionId(); }
 
     public void insert(Transaction transaction) { mRepository.insert(transaction); }
 

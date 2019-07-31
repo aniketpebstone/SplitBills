@@ -37,7 +37,7 @@ public class DeleteSessionAdapter extends RecyclerView.Adapter<DeleteSessionAdap
 
     @Override
     public DeleteSessionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.delete_sessons_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.modify_sessons_item, parent, false);
         return new DeleteSessionViewHolder(itemView);
     }
 

@@ -25,4 +25,7 @@ public interface SessionDao {
 
     @Query("SELECT * from session ORDER BY id")
     LiveData<List<Session>> getAllSessions();
+
+    @Query("SELECT * from session WHERE id=:id")
+    LiveData<Session> getSessionById(int id);
 }

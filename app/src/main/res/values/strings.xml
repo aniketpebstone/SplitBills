@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="createSession">Create New Event</string>
     <string name="loadSession">Load Existing Event</string>
-    <string name="deleteSession">Delete Existing Event</string>
+    <string name="modifySession">Modify Existing Event</string>
     <string name="title_activity_all_sessions">All Events</string>
     <string name="backToHomeScreen">Back</string>
     <string name="deleteSessions">Delete Events</string>

@@ -7,63 +7,52 @@
     tools:context=".Screens.AddPerson">
 
     <TextView
-        android:id="@+id/editTextView2"
+        android:id="@+id/editSessionTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/textprimary"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/personNameLabel"
+        android:text="@string/sessionNameLabel"
         android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/edt_editCreatePersonName"
+        android:id="@+id/edt_editSessionName"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextView2"/>
+        app:layout_constraintTop_toBottomOf="@id/editSessionTextView2"/>
     <requestFocus />
 
     <Button
-        android:id="@+id/btn_editCreatePerson"
+        android:id="@+id/btn_editSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="editPerson"
+        android:onClick="editSession"
         android:text="@string/UpdateButton"
         android:background="@drawable/button_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_editCreatePersonName" />
+        app:layout_constraintTop_toBottomOf="@id/edt_editSessionName" />
+
 
     <Button
-        android:id="@+id/btn_deletePerson"
+        android:id="@+id/btn_cancelEditSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="deletePerson"
-        android:text="@string/deleteButton"
-        android:background="@drawable/button_layout"
-        app:layout_constraintBottom_toBottomOf="@id/btn_editCreatePerson"
-        app:layout_constraintStart_toEndOf="@id/btn_editCreatePerson"
-        app:layout_constraintTop_toTopOf="@id/btn_editCreatePerson" />
-
-    <Button
-        android:id="@+id/btn_editCancelPerson"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:onClick="cancelUpdatePerson"
+        android:onClick="cancelUpdateSession"
         android:text="@string/CancelButton"
         android:background="@drawable/button_layout"
-        app:layout_constraintBottom_toBottomOf="@id/btn_editCreatePerson"
-        app:layout_constraintStart_toEndOf="@id/btn_deletePerson"
-        app:layout_constraintTop_toTopOf="@id/btn_editCreatePerson" />
+        app:layout_constraintBottom_toBottomOf="@id/btn_editSession"
+        app:layout_constraintStart_toEndOf="@id/btn_editSession"
+        app:layout_constraintTop_toTopOf="@id/btn_editSession" />
 
 
 

@@ -19,11 +19,10 @@ public class TransactionRepository {
     public TransactionRepository(Application application) {
         SplitBillsRoomDatabase db = SplitBillsRoomDatabase.getDatabase(application);
         txnDao = db.transactionDao();
-        allTxns = txnDao.getAllTransactionsBySessionId(ActiveSession.sessionId);
     }
 
     public LiveData<List<Transaction>> getAllTransactionsBySessionId() {
-        return allTxns;
+        return txnDao.getAllTransactionsBySessionId(ActiveSession.sessionId);
     }
 
     public void insert (Transaction txn) {
