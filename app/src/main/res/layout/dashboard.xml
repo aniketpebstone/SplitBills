@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage participants"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
     <androidx.cardview.widget.CardView
@@ -47,7 +47,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="You can add a person, modify person name and delete a person.."
+                android:text="You can add a person, modify person name and delete a person."
+                android:padding="5dp"
                 android:layout_margin="5dp"/>
 
             <Button
@@ -75,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage expenses"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
     <androidx.cardview.widget.CardView
@@ -107,7 +108,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="You can see all the history of expenses, modify and delete a expense.."
+                android:text="You can see all the history of expenses, modify and delete a expense."
+                android:padding="5dp"
                 android:layout_margin="5dp"/>
 
             <Button
@@ -135,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Overview"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
     <androidx.cardview.widget.CardView
@@ -168,7 +170,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="You can generate the result/splits which shows who has to gives money to whom."
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                />
 
             <Button
                 android:id="@+id/btn_createResult"
