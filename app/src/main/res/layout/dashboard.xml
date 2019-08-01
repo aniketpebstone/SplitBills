@@ -52,11 +52,10 @@
 
             <Button
                 android:id="@+id/btn_createPerson"
-                android:textSize="14dp"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:padding="10dp"
                 android:onClick="goToAllPerson"
                 android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"
@@ -113,11 +112,10 @@
 
             <Button
                 android:id="@+id/btn_createTxn"
-                android:textSize="14dp"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:padding="10dp"
                 android:onClick="goToAllTxns"
                 android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"
@@ -125,7 +123,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_infoTxn"
-                android:text="Transaction Details"/>
+                android:text="Show all expenses"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -174,11 +172,10 @@
 
             <Button
                 android:id="@+id/btn_createResult"
-                android:textSize="14dp"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:padding="10dp"
                 android:onClick="goToAllTxns"
                 android:background="@drawable/button_layout"
                 android:layout_gravity="center_horizontal"

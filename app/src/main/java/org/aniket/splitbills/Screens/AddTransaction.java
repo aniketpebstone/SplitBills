@@ -48,18 +48,7 @@ public class AddTransaction extends AppCompatActivity {
         personViewModel.getAllPersonsBySessionId().observe(this, new Observer<List<Person>>() {
             @Override
             public void onChanged(@Nullable final List<Person> persons) {
-                List<String> personNameList = new ArrayList<String>();
-                //For spinner
-                if (persons == null || persons.isEmpty()) {
-                    personNameList.add("-- Select Person --");
-                } else {
-                    for (Person person : persons) {
-                        personNameList.add(person.getName());
-                    }
-
-                }
                 SpinnerAdapter<Person> spinnerAdapter=new SpinnerAdapter<>(AddTransaction.this,R.id.sp_personName,R.id.tv_name,persons);
-//                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddTransaction.this, android.R.layout.simple_spinner_item, personNameList);
                 spinner.setAdapter(spinnerAdapter);
 
                 //For recycle view
@@ -100,7 +89,6 @@ public class AddTransaction extends AppCompatActivity {
         }
         else
         {
-
             Person person=(Person)spinner.getSelectedItem();
             System.out.println(person.getName()+" spend "+amountSpend+" on "+purpose+" which "+ (splittedEqually?"Splitted Equally":"Splitted among ")+" "+recyclerView.getTag());
         }
