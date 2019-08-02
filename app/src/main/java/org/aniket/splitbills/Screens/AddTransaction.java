@@ -31,6 +31,7 @@ public class AddTransaction extends AppCompatActivity {
     Spinner spinner = null;
     boolean splittedEqually=true;
     RecyclerView recyclerView = null;
+    PersonListInTxnAdapter adapter =null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class AddTransaction extends AppCompatActivity {
         personViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
         spinner = (Spinner) findViewById(R.id.sp_personName);
         recyclerView = (RecyclerView) findViewById(R.id.rv_allPersons_in_txns);
+
         //Radio Group
         RadioButton radioButton = findViewById(R.id.rd_equally);
         radioButton.setChecked(true);
@@ -53,7 +55,7 @@ public class AddTransaction extends AppCompatActivity {
 
                 //For recycle view
                 recyclerView.setVisibility(View.GONE);
-                PersonListInTxnAdapter adapter = new PersonListInTxnAdapter(AddTransaction.this);
+                adapter = new PersonListInTxnAdapter(AddTransaction.this);
                 recyclerView.setLayoutManager(new LinearLayoutManager(AddTransaction.this));
                 recyclerView.setAdapter(adapter);
                 adapter.setPersons(persons);
@@ -89,8 +91,20 @@ public class AddTransaction extends AppCompatActivity {
         }
         else
         {
-            Person person=(Person)spinner.getSelectedItem();
-            System.out.println(person.getName()+" spend "+amountSpend+" on "+purpose+" which "+ (splittedEqually?"Splitted Equally":"Splitted among ")+" "+recyclerView.getTag());
+            if(!splittedEqually && (adapter==null||adapter.getPersonsIds().isEmpty()))
+            {
+
+                System.out.println("Please select the persons which are involved in the current expense.");
+            }
+            else
+            {
+                Person person=(Person)spinner.getSelectedItem();
+                if(splittedEqually)
+                    System.out.println(person.getName()+" spend "+amountSpend+" on "+purpose+" which  Splitted Equally");
+                else
+                    System.out.println(person.getName()+" spend "+amountSpend+" on "+purpose+" which "+ "Splitted among "+" "+adapter.getPersonsIds());
+            }
+
         }
     }
 

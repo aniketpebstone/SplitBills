@@ -1,22 +1,29 @@
 package org.aniket.splitbills.adapter;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.aniket.splitbills.R;
 import org.aniket.splitbills.model.Person;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class PersonListInTxnAdapter extends RecyclerView.Adapter<PersonListInTxnAdapter.PersonViewHolder> {
+
+    List<Integer> personIds=new ArrayList<>();
 
     class PersonViewHolder extends RecyclerView.ViewHolder {
         private final CheckBox personItemView;
@@ -26,6 +33,7 @@ public class PersonListInTxnAdapter extends RecyclerView.Adapter<PersonListInTxn
             super(itemView);
             personItemView = itemView.findViewById(R.id.cbk_personsInTxn);
             llAllPersons = (LinearLayout) itemView;
+
         }
     }
 
@@ -46,12 +54,27 @@ public class PersonListInTxnAdapter extends RecyclerView.Adapter<PersonListInTxn
     public void onBindViewHolder(PersonViewHolder holder, int position) {
         Person current = mPersons.get(position);
         holder.personItemView.setText(current.getName());
-        holder.llAllPersons.setTag(current.getId());
+        holder.personItemView.setTag(current.getId());
+        holder.personItemView.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                        if (isChecked)
+                            personIds.add((Integer)(compoundButton.getTag()));
+                        else
+                            personIds.remove(compoundButton.getTag());
+                    }
+
+                });
     }
 
     public void setPersons(List<Person> persons) {
         mPersons = persons;
         notifyDataSetChanged();
+    }
+
+    public List<Integer>  getPersonsIds() {
+        return personIds;
     }
 
     @Override
