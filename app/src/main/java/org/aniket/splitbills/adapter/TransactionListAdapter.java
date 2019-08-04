@@ -45,6 +45,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
     @Override
     public void onBindViewHolder(TxnViewHolder holder, int position) {
         Transaction current = mTxns.get(position);
+        System.out.println("Transaction:"+current);
         holder.txnItemView.setText(current.getExpense());
         holder.llAllTxns.setTag(current.getId());
     }

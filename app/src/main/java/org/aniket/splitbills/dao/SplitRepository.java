@@ -16,11 +16,14 @@ public class SplitRepository {
     public SplitRepository(Application application) {
         SplitBillsRoomDatabase db = SplitBillsRoomDatabase.getDatabase(application);
         splitDao = db.splitDao();
-        allSplits = splitDao.getAllSplitsBySessionId(ActiveSession.sessionId);
     }
 
     public LiveData<List<Split>> getAllSplitsBySessionId() {
-        return allSplits;
+        return splitDao.getAllSplitsBySessionId(ActiveSession.sessionId);
+    }
+
+    public LiveData<List<Split>> getAllSplitsByTxnId(int txnId) {
+        return splitDao.getAllSplitsByTxnId(txnId);
     }
 
     public void insert (Split split) {

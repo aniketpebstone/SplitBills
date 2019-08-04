@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import org.aniket.splitbills.dao.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TransactionViewModel extends AndroidViewModel {
 
@@ -23,6 +24,6 @@ public class TransactionViewModel extends AndroidViewModel {
 
     public LiveData<List<Transaction>> getAllTransactionsBySessionId() { return mRepository.getAllTransactionsBySessionId(); }
 
-    public void insert(Transaction transaction) { mRepository.insert(transaction); }
+    public Long insert(Transaction transaction) throws ExecutionException, InterruptedException { return mRepository.insert(transaction); }
 
 }

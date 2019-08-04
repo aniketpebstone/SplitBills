@@ -3,6 +3,7 @@ package org.aniket.splitbills.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import org.aniket.splitbills.model.Transaction;
@@ -12,8 +13,8 @@ import java.util.List;
 @Dao
 public interface TransactionDao {
 
-    @Insert
-    void insert(Transaction transaction);
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    long insert(Transaction transaction);
 
     @Update
     void update(Transaction transaction);

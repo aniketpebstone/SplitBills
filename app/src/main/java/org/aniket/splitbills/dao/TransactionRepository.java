@@ -10,6 +10,7 @@ import org.aniket.splitbills.model.Person;
 import org.aniket.splitbills.model.Transaction;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TransactionRepository {
 
@@ -25,11 +26,11 @@ public class TransactionRepository {
         return txnDao.getAllTransactionsBySessionId(ActiveSession.sessionId);
     }
 
-    public void insert (Transaction txn) {
-        new insertAsyncTask(txnDao).execute(txn);
+    public Long insert (Transaction txn) throws ExecutionException, InterruptedException {
+        return new insertAsyncTask(txnDao).execute(txn).get();
     }
 
-    private static class insertAsyncTask extends AsyncTask<Transaction, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<Transaction, Void, Long> {
 
         private TransactionDao mAsyncTaskDao;
 
@@ -38,9 +39,8 @@ public class TransactionRepository {
         }
 
         @Override
-        protected Void doInBackground(final Transaction... params) {
-            mAsyncTaskDao.insert(params[0]);
-            return null;
+        protected Long doInBackground(final Transaction... params) {
+            return mAsyncTaskDao.insert(params[0]);
         }
     }
 }
