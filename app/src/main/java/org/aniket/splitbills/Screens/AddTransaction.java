@@ -32,11 +32,12 @@ public class AddTransaction extends AppCompatActivity {
     private TransactionViewModel txnViewModel;
     private SpliltViewModel spliltViewModel;
     private PersonViewModel personViewModel;
+    private SplitViewModel splitViewModel;
     Spinner spinner = null;
     boolean splittedEqually = true;
     RecyclerView recyclerView = null;
     PersonListInTxnAdapter adapter = null;
-    List<Person> persons = null;
+    List<Person> personList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class AddTransaction extends AppCompatActivity {
         txnViewModel = ViewModelProviders.of(this).get(TransactionViewModel.class);
         spliltViewModel = ViewModelProviders.of(this).get(SpliltViewModel.class);
         personViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
+        splitViewModel = ViewModelProviders.of(this).get(SplitViewModel.class);
         spinner = (Spinner) findViewById(R.id.sp_personName);
         recyclerView = (RecyclerView) findViewById(R.id.rv_allPersons_in_txns);
 
@@ -56,7 +58,9 @@ public class AddTransaction extends AppCompatActivity {
         personViewModel.getAllPersonsBySessionId().observe(this, new Observer<List<Person>>() {
             @Override
             public void onChanged(@Nullable final List<Person> persons) {
-                AddTransaction.this.persons = persons;
+
+                personList = persons;
+                AddTransaction.this.personList = persons;
 
                 SpinnerAdapter<Person> spinnerAdapter = new SpinnerAdapter<>(AddTransaction.this, R.id.sp_personName, R.id.tv_name, persons);
                 spinner.setAdapter(spinnerAdapter);
@@ -95,36 +99,43 @@ public class AddTransaction extends AppCompatActivity {
         Float amountSpend = Float.parseFloat(amountSpendTxt);
         if (spinner.getSelectedItem().equals("-- Select Person --")) {
             System.out.println("Please add the Person first!");
-        } else {
+        }
+        else
+            {
             if (!splittedEqually && (adapter == null || adapter.getPersonsIds().isEmpty())) {
 
                 System.out.println("Please select the persons which are involved in the current expense.");
             } else {
                 Person person = (Person) spinner.getSelectedItem();
+                long now=new Date().getTime();
                 try {
-                    Transaction txn = new Transaction(ActiveSession.sessionId, person.getId(), purpose, amountSpend, new Date().getTime());
+                    Transaction txn = new Transaction(ActiveSession.sessionId, person.getId(), purpose, amountSpend, now);
+                    System.out.println("Transaction:" + txn);
                     long txnId = txnViewModel.insert(txn);
-                    if (splittedEqually) {
-
-
-                        for (Person p : persons) {
-                            Split split = new Split(ActiveSession.sessionId, (int) txnId, person.getId(), p.getId(), amountSpend);
+                    if (splittedEqually)
+                    {
+                        int noOfPersons = personList.size();
+                        float perShare = amountSpend / noOfPersons;
+                        for (Person p : personList) {
+                            Split split = new Split(ActiveSession.sessionId, (int) txnId, person.getId(), p.getId(), perShare);
                             spliltViewModel.insert(split);
                             System.out.println("Splits:" + split);
                         }
-
-
                         System.out.println(person.getName() + " spend " + amountSpend + " on " + purpose + " which  Splitted Equally");
-                    } else {
+                    }
+                    else
+                    {
+                        int noOfPersons =adapter.getPersonsIds().size();
+                        float perShare = amountSpend / noOfPersons;
                         System.out.println(person.getName() + " spend " + amountSpend + " on " + purpose + " which " + "Splitted among " + " " + adapter.getPersonsIds());
-                        for (int pId : adapter.getPersonsIds()) {
-                            Split split = new Split(ActiveSession.sessionId, (int) txnId, person.getId(), pId, amountSpend);
+                        for (int pId : adapter.getPersonsIds())
+                        {
+                            Split split = new Split(ActiveSession.sessionId, (int) txnId, person.getId(), pId, perShare );
                             spliltViewModel.insert(split);
                             System.out.println("Splits:" + split);
                         }
 
                     }
-                    System.out.println("Transaction:" + txn);
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {

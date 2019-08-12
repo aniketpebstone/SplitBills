@@ -23,7 +23,8 @@ public class SplitRepository {
     }
 
     public LiveData<List<Split>> getAllSplitsByTxnId(int txnId) {
-        return splitDao.getAllSplitsByTxnId(txnId);
+        allSplits = splitDao.getAllSplitsByTxnId(txnId);
+        return allSplits;
     }
 
     public void insert (Split split) {
